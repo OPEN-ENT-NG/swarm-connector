@@ -1,11 +1,11 @@
 {
-  "name": "fr.openent~swarm-connector~0.1-SNAPSHOT",
+  "name": "fr.openent~swarm-connector~${swarmConnectorVersion}",
   "config": {
     "main" : "fr.openent.swarm.Swarm",
     "port" : 8046,
     "app-name" : "Swarm-connector",
     "app-address" : "/swarm",
-    "app-icon" : "Swarm-logo-large",
+    "app-icon" : "swarm-large",
     "host": "${host}",
     "ssl" : $ssl,
     "auto-redeploy": false,

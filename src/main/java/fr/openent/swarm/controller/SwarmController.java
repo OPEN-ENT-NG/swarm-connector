@@ -40,20 +40,19 @@ public class SwarmController extends ControllerHelper {
     public void getUsersByMEF(HttpServerRequest request) {
         String userId = request.getParam(USER_ID);
         String mefIdsJson = request.getParam(MEF_IDS);
+
         if (userId == null || userId.isEmpty() || mefIdsJson == null || mefIdsJson.isEmpty()) {
             log.error("Swarm-Connector@SwarmController::getUsersByMEF] no userId / mefIds provided.");
             badRequest(request);
-        } else {
-            JsonArray mefIds = new JsonArray(mefIdsJson);
-            userService.getUsersByMEF(userId, mefIds)
-                    .onSuccess(users -> {
-                        JsonObject response = new JsonObject().put(USERS, users);
-                        renderJson(request, response);
-                    })
-                    .onFailure(cause -> {
-                        log.error("Swarm-Connector@SwarmController::getUsersByMEF] Error fetching users by MEF: " + cause.getMessage());
-                        badRequest(request);
-                    });
+            return;
         }
+
+        JsonArray mefIds = new JsonArray(mefIdsJson);
+        userService.getUsersByMEF(userId, mefIds)
+            .onSuccess(users -> renderJson(request, users))
+            .onFailure(err -> {
+                log.error("Swarm-Connector@SwarmController::getUsersByMEF] Error fetching users by MEF: " + err.getMessage());
+                badRequest(request);
+            });
     }
 }

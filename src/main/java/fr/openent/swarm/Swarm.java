@@ -7,8 +7,6 @@ import org.entcore.common.http.BaseServer;
 
 public class Swarm extends BaseServer {
 
-    public static final String VIEW_RIGHT = "swarm.view";
-
     @Override
     public void start(Promise<Void> startPromise) throws Exception {
         super.start(startPromise);

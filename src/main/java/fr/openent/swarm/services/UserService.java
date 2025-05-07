@@ -2,7 +2,8 @@ package fr.openent.swarm.services;
 
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonArray;
-import org.entcore.common.user.UserInfos;
+
+import java.util.List;
 
 public interface UserService {
     /**
@@ -10,5 +11,5 @@ public interface UserService {
      *
      * @return un Future contenant un JsonArray avec les utilisateurs correspondants.
      */
-    Future<JsonArray> getUsersByMEF(String userId, JsonArray mefIds);
+    Future<JsonArray> getUsersByMEF(String userId, List<String> mefIds);
 }

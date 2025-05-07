@@ -7,11 +7,12 @@ import fr.wseduc.security.SecuredAction;
 import fr.wseduc.rs.Get;
 import fr.wseduc.security.ActionType;
 import io.vertx.core.http.HttpServerRequest;
-import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import org.entcore.common.controller.ControllerHelper;
 import org.entcore.common.http.filter.ResourceFilter;
 import org.entcore.common.http.filter.SuperAdminFilter;
+
+import java.util.List;
 
 import static fr.openent.swarm.core.constants.Field.*;
 
@@ -39,15 +40,14 @@ public class SwarmController extends ControllerHelper {
     @ResourceFilter(SuperAdminFilter.class)
     public void getUsersByMEF(HttpServerRequest request) {
         String userId = request.getParam(USER_ID);
-        String mefIdsJson = request.getParam(MEF_IDS);
+        List<String> mefIds = request.params().getAll(MEF_IDS);
 
-        if (userId == null || userId.isEmpty() || mefIdsJson == null || mefIdsJson.isEmpty()) {
+        if (userId == null || userId.isEmpty() || mefIds == null || mefIds.isEmpty()) {
             log.error("Swarm-Connector@SwarmController::getUsersByMEF] no userId / mefIds provided.");
             badRequest(request);
             return;
         }
 
-        JsonArray mefIds = new JsonArray(mefIdsJson);
         userService.getUsersByMEF(userId, mefIds)
             .onSuccess(users -> renderJson(request, users))
             .onFailure(err -> {

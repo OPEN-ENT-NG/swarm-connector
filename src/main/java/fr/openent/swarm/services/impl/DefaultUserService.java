@@ -10,12 +10,14 @@ import io.vertx.core.logging.LoggerFactory;
 import org.entcore.common.neo4j.Neo4j;
 import org.entcore.common.neo4j.Neo4jResult;
 
+import java.util.List;
+
 import static fr.openent.swarm.core.constants.Field.*;
 
 public class DefaultUserService implements UserService {
     private static final Logger log = LoggerFactory.getLogger(DefaultUserService.class);
 
-    public Future<JsonArray> getUsersByMEF(String userId, JsonArray mefIds){
+    public Future<JsonArray> getUsersByMEF(String userId, List<String> mefIds){
         Promise<JsonArray> promise = Promise.promise();
         this.getUserInfos(userId)
                 .onSuccess(userInfos -> {

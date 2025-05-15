@@ -11,6 +11,7 @@ import io.vertx.core.json.JsonObject;
 import org.entcore.common.controller.ControllerHelper;
 import org.entcore.common.http.filter.ResourceFilter;
 import org.entcore.common.http.filter.SuperAdminFilter;
+import org.entcore.common.user.UserUtils;
 
 import java.util.List;
 
@@ -41,6 +42,7 @@ public class SwarmController extends ControllerHelper {
     public void getUsersByMEF(HttpServerRequest request) {
         String userId = request.getParam(USER_ID);
         List<String> mefIds = request.params().getAll(MEF_IDS);
+        Boolean addMyself = Boolean.parseBoolean(request.getParam(ADD_MYSELF));
 
         if (userId == null || userId.isEmpty() || mefIds == null || mefIds.isEmpty()) {
             log.error("Swarm-Connector@SwarmController::getUsersByMEF] no userId / mefIds provided.");
@@ -48,7 +50,7 @@ public class SwarmController extends ControllerHelper {
             return;
         }
 
-        userService.getUsersByMEF(userId, mefIds)
+        userService.getUsersByMEF(userId, mefIds, addMyself)
             .onSuccess(users -> renderJson(request, users))
             .onFailure(err -> {
                 log.error("Swarm-Connector@SwarmController::getUsersByMEF] Error fetching users by MEF: " + err.getMessage());

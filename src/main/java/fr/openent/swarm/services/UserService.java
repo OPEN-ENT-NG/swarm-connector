@@ -11,5 +11,5 @@ public interface UserService {
      *
      * @return un Future contenant un JsonArray avec les utilisateurs correspondants.
      */
-    Future<JsonArray> getUsersByMEF(String userId, List<String> mefIds);
+    Future<JsonArray> getUsersByMEF(String userId, List<String> mefIds, Boolean addMyself);
 }

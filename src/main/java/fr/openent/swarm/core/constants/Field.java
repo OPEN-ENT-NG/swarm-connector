@@ -12,5 +12,6 @@ public class Field {
     public static final String STUDENT = "Student";
     public static final String USER_CLASSES = "userClasses";
     public static final String USER_ID = "userId";
+    public static final String USER_IDS = "userIds";
     public static final String USER_STRUCTURES = "userStructures";
 }

@@ -2,7 +2,7 @@
   "name": "fr.openent~swarm-connector~${swarmConnectorVersion}",
   "config": {
     "main" : "fr.openent.swarm.Swarm",
-    "port" : 8046,
+    "port" : 8146,
     "app-name" : "Swarm-connector",
     "app-address" : "/swarm",
     "app-icon" : "swarm-large",

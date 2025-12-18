@@ -1,0 +1,20 @@
+{
+  "name": "fr.openent~swarm-connector",
+  "config": {
+    "main" : "fr.openent.swarm.Swarm",
+    "port" : 8146,
+    "csrf-token": {{ csrfToken | default('true') }},
+    "app-name" : "Swarm-connector",
+    "app-address" : "/swarm",
+    "app-icon" : "swarm-large",
+    "app-type" : "SYSTEM",
+    "host": "https://{{ host }}",
+    "ssl" : true,
+    "auto-redeploy": false,
+    "userbook-host": "https://{{ host }}",
+    "integration-mode": "{{ integration_mode|default('HTTP') }}",
+    "app-registry.port" : 8012,
+    "mode" : "prod",
+    "entcore.port" : 8009
+  }
+}

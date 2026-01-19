@@ -6,12 +6,12 @@
     <parent>
         <groupId>io.edifice</groupId>
         <artifactId>app-parent</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.0.1</version>
     </parent>
 
     <groupId>fr.openent</groupId>
     <artifactId>swarm-connector</artifactId>
-    <version>1.0-zookeeper-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
 
     <repositories>
         <repository>
@@ -28,12 +28,12 @@
     </scm>
 
     <properties>
-        <entCoreVersion>6.10-zookeeper-SNAPSHOT</entCoreVersion>
+        <entCoreVersion>6.13-SNAPSHOT</entCoreVersion>
         <toolsVersion>2.0.0-final</toolsVersion>
         <junitVersion>5.1.0</junitVersion>
         <vertxCronTimerVersion>3.0-SNAPSHOT</vertxCronTimerVersion>
         <powerMockVersion>2.0.2</powerMockVersion>
-        <mockitoVersion>[2.0,3.0)</mockitoVersion>
+        <mockitoVersion>2.28.2</mockitoVersion>
         <gatlingHighchartsVersion>2.2.2</gatlingHighchartsVersion>
         <reflectionsVersion>0.10.2</reflectionsVersion>
     </properties>
@@ -115,12 +115,6 @@
             <groupId>org.powermock</groupId>
             <artifactId>powermock-core</artifactId>
             <version>${powerMockVersion}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.gatling.highcharts</groupId>
-            <artifactId>gatling-charts-highcharts</artifactId>
-            <version>${gatlingHighchartsVersion}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

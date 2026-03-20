@@ -2,6 +2,10 @@
   "name": "fr.openent~swarm-connector",
   "config": {
     "main" : "fr.openent.swarm.Swarm",
+    "probes": [
+      "org.entcore.common.http.health.Neo4jProbe",
+      "org.entcore.common.http.health.MongoProbe"
+    ],
     "port" : 8146,
     "csrf-token": {{ csrfToken | default('true') }},
     "app-name" : "Swarm-connector",
